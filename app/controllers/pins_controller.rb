@@ -12,7 +12,6 @@ class PinsController < ApplicationController
     end
     
     def create
-        binding.pry
         pin =  Pin.new(pin_params)
         if pin.save
             render json: pin
