@@ -10,16 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_24_223830) do
+ActiveRecord::Schema.define(version: 2019_10_12_181456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pin_releases", force: :cascade do |t|
+    t.integer "edition"
+    t.integer "figpin_id"
+    t.datetime "release_date"
+    t.integer "pin_id"
+    t.integer "company_id"
+    t.boolean "exclusive"
+    t.integer "volume_size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "pins", force: :cascade do |t|
     t.string "name"
     t.integer "edition_size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id"
   end
 
 end
