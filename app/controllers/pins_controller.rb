@@ -42,6 +42,6 @@ class PinsController < ApplicationController
 
     private
         def pin_params
-            params.require(:pin).permit(:edition_size, :name)
+            params.require(:pin).permit(:figpin_id, :name, :photo)
         end
 end
