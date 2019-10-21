@@ -1,8 +1,7 @@
 class PinsController < ApplicationController
     def index
         pins = Pin.all
-
-        render json: pins
+        render json: pins, methods: :photo_url
     end
     
     def show
