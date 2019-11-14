@@ -5,7 +5,7 @@ ActiveAdmin.register Pin do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :edition_size, :company_id, :figpin_id, :photo
+  permit_params :name, :edition_size, :company_id, :figpin_id, :photo, :line_id
   form partial: 'form'
   show do
     attributes_table do
@@ -14,6 +14,7 @@ ActiveAdmin.register Pin do
       row :photo do |ad|
         image_tag url_for(ad.photo)
       end
+      row :line
     end
   end
   

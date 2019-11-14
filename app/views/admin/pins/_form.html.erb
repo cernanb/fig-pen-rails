@@ -3,6 +3,7 @@
         <%= f.input :name %>
         <%= f.input  :figpin_id, label: "Figpin ID" %>
         <%= f.input :photo, as: :file %>
+        <%= f.collection_select :line_id, Line.all, :id, :name, :prompt => true %>
     <% end %>
     <%= f.actions %>
 <% end %>

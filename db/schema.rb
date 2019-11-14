@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_030323) do
+ActiveRecord::Schema.define(version: 2019_11_09_184346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,12 @@ ActiveRecord::Schema.define(version: 2019_10_13_030323) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "pin_releases", force: :cascade do |t|
     t.integer "edition"
     t.datetime "release_date"
@@ -85,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_030323) do
     t.datetime "updated_at", null: false
     t.integer "company_id"
     t.integer "figpin_id"
+    t.integer "line_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
