@@ -11,8 +11,10 @@ ActiveAdmin.register Pin do
     attributes_table do
       row :name
       row :figpin_id
-      row :photo do |ad|
-        image_tag url_for(ad.photo)
+      if pin.photo.attached?
+        row :photo do |ad|
+          image_tag url_for(ad.photo) 
+        end
       end
       row :line
     end
