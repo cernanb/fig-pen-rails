@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_015535) do
+ActiveRecord::Schema.define(version: 2019_11_15_022743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,13 +82,13 @@ ActiveRecord::Schema.define(version: 2019_11_15_015535) do
 
   create_table "pin_releases", force: :cascade do |t|
     t.integer "edition"
-    t.datetime "release_date"
     t.integer "pin_id"
-    t.integer "company_id"
     t.boolean "exclusive"
     t.integer "volume_size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.integer "retailer_id"
   end
 
   create_table "pins", force: :cascade do |t|
@@ -98,6 +98,12 @@ ActiveRecord::Schema.define(version: 2019_11_15_015535) do
     t.integer "company_id"
     t.integer "figpin_id"
     t.integer "line_id"
+  end
+
+  create_table "retailers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
