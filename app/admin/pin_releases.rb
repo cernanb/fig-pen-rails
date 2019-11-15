@@ -5,7 +5,7 @@ ActiveAdmin.register PinRelease do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :edition, :pin_id, :retailer_id, :exclusive, :volume_size, :event_id
+  permit_params :edition, :pin_id, :retailer_id, :exclusive, :volume_size, :event_id, :hard_case
   #
   # or
   #
