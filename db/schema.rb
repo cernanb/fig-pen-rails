@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_022743) do
+ActiveRecord::Schema.define(version: 2019_11_15_023720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2019_11_15_022743) do
   end
 
   create_table "pin_releases", force: :cascade do |t|
-    t.integer "edition"
+    t.string "edition"
     t.integer "pin_id"
     t.boolean "exclusive"
     t.integer "volume_size"
