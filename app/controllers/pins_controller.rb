@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
     def index
         pins = Pin.order(figpin_id: :asc)
-        render json: pins, methods: :photo_url, :include => {:line => {:only => [:name, :id]}, :pin_releases => {:only => [:edition, :volume_size], :include => {:event => {:only => [:name]}, :retailer => {:only => [:name]}}} }
+        render json: pins, methods: :photo_url, :include => {:line => {:only => [:name, :id]}, :pin_releases => {:only => [:edition, :volume_size, :exclusive], :include => {:event => {:only => [:name]}, :retailer => {:only => [:name]}}} }
     end
     
     def show
