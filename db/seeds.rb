@@ -5,4 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+require 'csv'
+require 'open-uri'
+
+pins = File.new(open('figpin.csv', read_timeout: 360))
+CSV.foreach(pins.path, headers: true) do |row|
+    if row["Name"] != "TBD" 
+        line = Line.find_or_create_by(name: row["Reference"])
+        pin = Pin.create(name: row["Name"], figpin_id: row["#"], line: line)
+    end
+end
