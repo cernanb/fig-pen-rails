@@ -10,8 +10,22 @@
 require 'csv'
 require 'open-uri'
 
-pins = File.new(open('figpin.csv', read_timeout: 360))
+pins = File.new(open('figpin2.csv', read_timeout: 360))
 CSV.foreach(pins.path, headers: true) do |row|
+    if row["Name"] != "TBD" 
+        line = Line.find_or_create_by(name: row["Reference"])
+        pin = Pin.create(name: row["Name"], figpin_id: row["#"], line: line)
+    end
+end
+pins2 = File.new(open('figpin3.csv', read_timeout: 360))
+CSV.foreach(pins2.path, headers: true) do |row|
+    if row["Name"] != "TBD" 
+        line = Line.find_or_create_by(name: row["Reference"])
+        pin = Pin.create(name: row["Name"], figpin_id: row["#"], line: line)
+    end
+end
+pins3 = File.new(open('figpin4.csv', read_timeout: 360))
+CSV.foreach(pins3.path, headers: true) do |row|
     if row["Name"] != "TBD" 
         line = Line.find_or_create_by(name: row["Reference"])
         pin = Pin.create(name: row["Name"], figpin_id: row["#"], line: line)
